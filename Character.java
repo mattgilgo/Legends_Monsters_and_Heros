@@ -1,4 +1,4 @@
-public class Character {
+public abstract class Character {
     String name = "";
     int hp = 0;
     int level = 0;
