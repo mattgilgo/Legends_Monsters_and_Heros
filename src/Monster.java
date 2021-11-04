@@ -1,12 +1,9 @@
 import java.util.*;
 
 public class Monster extends Character {
-    int mana = 0;
-    int strength = 0;
-    int dexterity = 0;
-    int agility = 0;
-    int money = 0;
-    int xp = 0;
+    int attack = 0;
+    int defense = 0;
+    int evade = 0;
     
     public Monster() {
         super();
@@ -28,51 +25,27 @@ public class Monster extends Character {
         // put faint code here
     }
 
-    public int getMana() {
-        return this.mana;
+    public int getAttack() {
+        return this.attack;
     }
 
-    public void setMana(int mana) {
-        this.mana = mana;
+    public void setAttack(int attack) {
+        this.attack = attack;
     }
 
-    public int getStrength() {
-        return this.strength;
+    public int getDefense() {
+        return this.defense;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
+    public void setDefense(int defense) {
+        this.defense = defense;
     }
 
-    public int getDexterity() {
-        return this.dexterity;
+    public int getEvade() {
+        return this.evade;
     }
 
-    public void setDexterity(int dexterity) {
-        this.dexterity = dexterity;
-    }
-
-    public int getAgility() {
-        return this.agility;
-    }
-
-    public void setAgility(int agility) {
-        this.agility = agility;
-    }
-
-    public int getMoney() {
-        return this.agility;
-    }
-
-    public void setMoney(int money) {
-        this.money = money;
-    }
-
-    public int getXP() {
-        return this.xp;
-    }
-
-    public void setXP(int xp) {
-        this.xp = xp;
+    public void setEvade(int evade) {
+        this.evade = evade;
     }
 }

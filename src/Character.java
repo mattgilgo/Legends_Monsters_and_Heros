@@ -4,6 +4,13 @@ public abstract class Character {
     int level = 0;
     String type = "";
 
+    public Character(String name, int hp, int level, String type) {
+        setName(name);
+        setHP(hp);
+        setLevel(level);
+        setType(type);
+    }
+
     public String getName() {
         return this.name;
     }

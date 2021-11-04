@@ -8,13 +8,11 @@ public class Hero extends Character {
     int money = 0;
     int xp = 0;
 
-    public Hero() {
-        super();
+    public Hero(String name, int hp, int level, String type, int mana, int strength, int agility, int dexterity, int startMoney, int xp) {
+        super(name, hp, level, type);
     }
 
     public Hero createHero(String type, String name) {
-        
-        
         if (type.equals("Warrior")) {
             return new TxtParse.parseWarrior()
             return new Warrior(String name, int mana, int strength, int agility, int dexterity, int startMoney, int xp);
