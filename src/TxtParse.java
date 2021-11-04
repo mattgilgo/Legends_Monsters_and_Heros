@@ -236,7 +236,7 @@ public class TxtParse {
         return listSpirit;
     }
 
-    public List<Warrior> parseWarrior() {
+    public Warrior parseWarrior() {
 
         String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
         Scanner scan = new Scanner(new File(txt + "Warriors.txt"));
@@ -245,18 +245,22 @@ public class TxtParse {
             list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
         }
 
-        Iterator<String> iter = list.iterator();
-        List<Warrior> listWarrior = new ArrayList<>();
-        iter.next();
+        String s = list.next();
+        String[] str = s.split("\\s+");
+        Warrior warrior = new Warrior(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]));
 
-        while (iter.hasNext()) {
-            String s = iter.next();
-            String[] str = s.split("\\s+");
-            Warrior warrior = new Warrior(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]));
-            listWarrior.add(warrior);
-        }
+        //Iterator<String> iter = list.iterator();
+        //List<Warrior> listWarrior = new ArrayList<>();
+        //iter.next();
 
-        return listWarrior;
+        //while (iter.hasNext()) {
+        //    String s = iter.next();
+        //    String[] str = s.split("\\s+");
+        //    Warrior warrior = new Warrior(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]));
+        //    listWarrior.add(warrior);
+        //}
+
+        //return listWarrior;
     }
 
     public List<Weapon> parseWeapon() {

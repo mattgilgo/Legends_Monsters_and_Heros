@@ -12,9 +12,12 @@ public class Hero extends Character {
         super();
     }
 
-    public Hero createHero(String type) {
+    public Hero createHero(String type, String name) {
+        
+        
         if (type.equals("Warrior")) {
-            return new Warrior();
+            return new TxtParse.parseWarrior()
+            return new Warrior(String name, int mana, int strength, int agility, int dexterity, int startMoney, int xp);
         } else if (type.equals("Sorcerer")) {
             return new Sorcerer();
         } else if (type.equals("Paladin")) {
