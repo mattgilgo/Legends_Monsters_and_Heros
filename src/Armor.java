@@ -1,3 +1,3 @@
-public class Armor {
+public class Armor extends Item {
     
 }

@@ -10,8 +10,8 @@ public class Warrior extends Hero {
         setAgility(agility);
         setMoney(startMoney);
         setXP(xp);
-        setHP(100);
         setLevel(1);
+        setHP(this.getLevel()*100);
     }
     
 }

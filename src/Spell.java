@@ -3,13 +3,21 @@ public class Spell extends Item {
     int manaCost = 0;
 
     public Spell(String name, int price, int minLevel, int damage, int manaCost){
-        super(); // way constructor is set up in Hero could create an issue
-        setName(name);
-        setType("Spell");
-        setPrice(price);
-        setMinLevel(minLevel);
-        setDamage(damage);
-        setManaCost(manaCost);
+        String type = "Potion";
+        super(name, type); // way constructor is set up in Hero could create an issue
+        if (type.equals("FireSpell")) {
+            return new FireSpell(name, price, minLevel, damage, manaCost);
+        } else if (type.equals("IceSpell")) {
+
+        } else if (type.equals("LightningSpell")) {
+
+        } else {
+            return null;
+        }
+    }
+
+    public Spell createSpell(String name, String type) {
+
     }
 
     public int getDamage() {

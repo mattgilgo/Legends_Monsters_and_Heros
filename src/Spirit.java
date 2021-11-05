@@ -1,4 +1,5 @@
 public class Spirit extends Monster{
+    
     public Spirit(String name, int level, int attack, int defense, int evade){
         super(); // way constructor is set up in Hero could create an issue
         setName(name);
@@ -7,7 +8,7 @@ public class Spirit extends Monster{
         setDefense(defense);
         setEvade(evade);
         setLevel(level);
-        setHP(super.getLevel()*100);
-        
+        setHP(this.getLevel()*100);
     }
+
 }
