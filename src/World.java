@@ -14,8 +14,28 @@ public class World {
                     {"C","M","C","C","M","M","I","I"}};
     }
 
-    public String getSpace(int x, int y) {
-        return this.map[x][y];
+    public String getSpace(int r, int c) {
+        return this.map[r][c];
     }
 
+     /* 
+     * A method used to print the map of the World.
+     */   
+
+    public void printMap(int n) {
+        System.out.print(" ");
+        for (int i = 0; i < n; i++) {
+            int j = i+1;
+            System.out.print("   " + j);
+        }
+        System.out.println("");
+        for (int r = 0; r < n; r++) {
+            System.out.print(r+1 + " | ");
+            for (int c = 0; c < n; c++) {
+                System.out.print(this.map[r][c] + " | ");
+            }
+            System.out.println();
+        }
+    
+    }
 }
