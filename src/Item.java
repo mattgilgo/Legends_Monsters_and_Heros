@@ -2,11 +2,11 @@ public class Item {
     String name = "";
     int price = 0;
     int minLevel = 0;
-    String type = "";
 
-    public Item(String name, String type) {
+    public Item(String name, int price, int minLevel) {
         setName(name);
-        setType(type);
+        setPrice(price);
+        setMinLevel(minLevel);
     }
 
     public String getName() {
@@ -33,12 +33,12 @@ public class Item {
         this.minLevel = minLevel;
     }
 
-    public String getType() {
-        return this.type;
-    }
+    //public String getType() {
+    //    return this.type;
+    //}
 
-    public void setType(String type) {
-        this.type = type;
-    }
+    //public void setType(String type) {
+    //    this.type = type;
+    //}
 
 }

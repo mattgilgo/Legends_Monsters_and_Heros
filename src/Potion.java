@@ -2,12 +2,12 @@ public class Potion extends Item {
     int attrAdded = 0;
     String attrAffected = "";
 
+    public Potion(String name, int price, int minLevel) {
+        super(name, price, minLevel);
+    }
+
     public Potion(String name, int price, int minLevel, int attrAdded, String attrAffected){
-        super(); // way constructor is set up in Hero could create an issue
-        setName(name);
-        setType("Potion");
-        setPrice(price);
-        setMinLevel(minLevel);
+        super(name, price, minLevel);
         setAttrAdded(attrAdded);
         setAttrAffected(attrAffected);
     }
@@ -26,5 +26,10 @@ public class Potion extends Item {
 
     public void setAttrAffected(String attrAffected) {
         this.attrAffected = attrAffected;
+    }
+
+    @Override
+    public String toString() {
+        return ("Name:" + this.getName() +"  Cost:" + this.getPrice() + "  Required Level:" + this.getMinLevel() + "  Attribute Increase:" + this.getAttrAdded() + "  Attribute Affected:" + this.getAttrAffected());
     }
 }

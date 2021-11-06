@@ -2,13 +2,11 @@ public abstract class Character {
     String name = "";
     int hp = 0;
     int level = 0;
-    String type = "";
 
-    public Character(String name, int hp, int level, String type) {
+    public Character(String name, int level) {
         setName(name);
-        setHP(hp);
         setLevel(level);
-        setType(type);
+        setHP();
     }
 
     public String getName() {
@@ -23,8 +21,8 @@ public abstract class Character {
         return this.hp;
     }
 
-    public void setHP(int hp) {
-        this.hp = hp;
+    public void setHP() {
+        this.hp = this.level*100;
     }
 
     public int getLevel() {

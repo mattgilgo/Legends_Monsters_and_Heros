@@ -5,20 +5,11 @@ public class Monster extends Character {
     int defense = 0;
     int evade = 0;
     
-    public Monster() {
-        super();
-    }
-
-    public Monster createMonster(String type) {
-        if (type.equals("Dragon")) {
-            return new Dragon();
-        } else if (type.equals("Exoskeleton")) {
-            return new Exoskeleton();
-        } else if (type.equals("Spirit")) {
-            return new Spirit();
-        } else {
-            return null;
-        }
+    public Monster(String name, int level, int attack, int defense, int evade) {
+        super(name, level);
+        setAttack(attack);
+        setDefense(defense);
+        setEvade(evade);
     }
 
     public void faint() {
@@ -48,4 +39,10 @@ public class Monster extends Character {
     public void setEvade(int evade) {
         this.evade = evade;
     }
+
+    @Override
+    public String toString() {
+        return ("Name:" + this.getName() +"  HP:" + this.getHP() + "  Level:" + this.getLevel() + "  Attack:" + this.getAttack() + "  Defense:" + this.getDefense() + "  Evade:" + this.getEvade());
+    }
+
 }

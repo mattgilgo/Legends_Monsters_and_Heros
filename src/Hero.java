@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Hero extends Character {
@@ -7,22 +8,15 @@ public class Hero extends Character {
     int agility = 0;
     int money = 0;
     int xp = 0;
+    int[][] currentSpace = {{0},{0}};
 
-    public Hero(String name, int hp, int level, String type, int mana, int strength, int agility, int dexterity, int startMoney, int xp) {
-        super(name, hp, level, type);
-    }
-
-    public Hero createHero(String type, String name) {
-        if (type.equals("Warrior")) {
-            return new TxtParse.parseWarrior()
-            return new Warrior(String name, int mana, int strength, int agility, int dexterity, int startMoney, int xp);
-        } else if (type.equals("Sorcerer")) {
-            return new Sorcerer();
-        } else if (type.equals("Paladin")) {
-            return new Paladin();
-        } else {
-            return null;
-        }
+    public Hero(String name, int level, int mana, int strength, int agility, int dexterity, int startMoney, int xp) {
+        super(name, level);
+        setMana(mana);
+        setStrength(strength);
+        setAgility(agility);
+        setDexterity(dexterity);
+        setMoney(startMoney);
     }
 
     public void faint() {
@@ -76,4 +70,27 @@ public class Hero extends Character {
     public void setXP(int xp) {
         this.xp = xp;
     }
+
+    public void chooseHeroesOptions() throws FileNotFoundException {
+        TxtParse parser = new TxtParse();
+        List<Warrior> listWarrior = parser.parseWarrior();
+        List<Sorcerer> listSorcerer = parser.parseSorcerer();
+        List<Paladin> listPaladin = parser.parsePaladin();
+
+        for (int i = 0; i < listWarrior.size(); i++) {
+            System.out.println("'"+(i+1)+"'" + " = " + listWarrior.get(i).toString());
+        }
+        for (int i = 0; i < listSorcerer.size(); i++) {
+            System.out.println("'"+(i+6)+"'" + " = " + listSorcerer.get(i).toString());
+        }
+        for (int i = 0; i < listPaladin.size(); i++) {
+            System.out.println("'"+(i+10)+"'" + " = " + listPaladin.get(i).toString());
+        }
+    }
+
+    @Override
+    public String toString() {
+        return ("Name:" + this.getName() +"  HP:" + this.getHP() + "  Level:" + this.getLevel() + "  Start Mana:" + this.getMana() + "  Strength:" + this.getStrength() + "  Agility:" + this.getAgility() + "  Dexterity:" + this.getDexterity() + "  Start Money:" + this.getMoney() + "  Starting XP:" + this.getXP());
+    }
+
 }

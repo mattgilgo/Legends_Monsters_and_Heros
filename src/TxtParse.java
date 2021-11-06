@@ -1,4 +1,7 @@
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class TxtParse {
@@ -6,17 +9,20 @@ public class TxtParse {
     Object file;
 
 
-    public List<Armor> parseArmor() {
+    public List<Armor> parseArmor() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Armory.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Armory.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
-        List<Armor> listArmor = new ArrayList<>();
+        ArrayList<Armor> listArmor = new ArrayList<>();
         iter.next();
 
         while (iter.hasNext()) {
@@ -29,13 +35,16 @@ public class TxtParse {
         return listArmor;
     }
 
-    public List<Dragon> parseDragon() {
+    public List<Dragon> parseDragon() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Dragons.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Dragons.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -52,13 +61,16 @@ public class TxtParse {
         return listDragon;
     }
 
-    public List<Exoskeleton> parseExoskeleton() {
+    public List<Exoskeleton> parseExoskeleton() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Exoskeletons.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Exoskeletons.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -75,13 +87,16 @@ public class TxtParse {
         return listExoskeleton;
     }
 
-    public List<FireSpell> parseFireSpell() {
+    public List<FireSpell> parseFireSpell() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "FireSpells.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/FireSpells.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -98,13 +113,16 @@ public class TxtParse {
         return listFireSpell;
     }
 
-    public List<IceSpell> parseIceSpell() {
+    public List<IceSpell> parseIceSpell() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "IceSpells.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/IceSpells.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -121,13 +139,16 @@ public class TxtParse {
         return listIceSpell;
     }
 
-    public List<IceSpell> parseLightningSpell() {
+    public List<LightningSpell> parseLightningSpell() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "LightningSpells.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/LightningSpells.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());  
         }
 
         Iterator<String> iter = list.iterator();
@@ -144,13 +165,16 @@ public class TxtParse {
         return listLightningSpell;
     }
 
-    public List<Paladin> parsePaladin() {
+    public List<Paladin> parsePaladin() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Paladins.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Paladins.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -160,20 +184,23 @@ public class TxtParse {
         while (iter.hasNext()) {
             String s = iter.next();
             String[] str = s.split("\\s+");
-            Paladin paladin = new Paladin(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]), Integer.parseInt(str[5]));
+            Paladin paladin = new Paladin(str[0], 1, Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]), Integer.parseInt(str[5]), Integer.parseInt(str[6]));
             listPaladin.add(paladin);
         }
 
         return listPaladin;
     }
 
-    public List<Potion> parsePotion() {
+    public List<Potion> parsePotion() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Potions.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Potions.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -190,13 +217,16 @@ public class TxtParse {
         return listPotion;
     }
 
-    public List<Sorcerer> parseSorcerer() {
+    public List<Sorcerer> parseSorcerer() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Sorcerers.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Sorcerers.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -206,20 +236,23 @@ public class TxtParse {
         while (iter.hasNext()) {
             String s = iter.next();
             String[] str = s.split("\\s+");
-            Sorcerer sorcerer = new Sorcerer(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]), Integer.parseInt(str[5]));
+            Sorcerer sorcerer = new Sorcerer(str[0], 1, Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]), Integer.parseInt(str[5]), Integer.parseInt(str[6]));
             listSorcerer.add(sorcerer);
         }
 
         return listSorcerer;
     }
 
-    public List<Spirit> parseSpirit() {
+    public List<Spirit> parseSpirit() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Spirits.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Spirits.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -236,40 +269,42 @@ public class TxtParse {
         return listSpirit;
     }
 
-    public Warrior parseWarrior() {
+    public List<Warrior> parseWarrior() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Warriors.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Warriors.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
-        String s = list.next();
-        String[] str = s.split("\\s+");
-        Warrior warrior = new Warrior(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]));
+        Iterator<String> iter = list.iterator();
+        ArrayList<Warrior> listWarrior = new ArrayList<>();
+        iter.next();
 
-        //Iterator<String> iter = list.iterator();
-        //List<Warrior> listWarrior = new ArrayList<>();
-        //iter.next();
+        while (iter.hasNext()) {
+            String s = iter.next();
+            String[] str = s.split("\\s+");
+            Warrior warrior = new Warrior(str[0], 1, Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]), Integer.parseInt(str[5]), Integer.parseInt(str[6]));
+            listWarrior.add(warrior);
+        }
 
-        //while (iter.hasNext()) {
-        //    String s = iter.next();
-        //    String[] str = s.split("\\s+");
-        //    Warrior warrior = new Warrior(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]));
-        //    listWarrior.add(warrior);
-        //}
-
-        //return listWarrior;
+        return listWarrior;
     }
 
-    public List<Weapon> parseWeapon() {
+    public List<Weapon> parseWeapon() throws FileNotFoundException {
 
-        String txt = System.getProperty("user.dir") + "/src/ReadInTxtFiles";
-        Scanner scan = new Scanner(new File(txt + "Weaponry.txt"));
-        List<String> list = new ArrayList<String>();
+        Path currentPath = Paths.get(System.getProperty("user.dir"));
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
+        Path txt = Paths.get(filePath.toString(), "/Weaponry.txt");
+        File file = new File(txt.toString());
+        Scanner scan = new Scanner(file);
+        ArrayList<String> list = new ArrayList<String>();
         while(scan.hasNext()) {
-            list.add(scan.nextLine());  // might have to change this to next() if there are issues with parser
+            list.add(scan.nextLine());
         }
 
         Iterator<String> iter = list.iterator();
@@ -279,7 +314,7 @@ public class TxtParse {
         while (iter.hasNext()) {
             String s = iter.next();
             String[] str = s.split("\\s+");
-            Weapon weapon = new Weapon(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]));
+            Weapon weapon = new Weapon(str[0], Integer.parseInt(str[1]), Integer.parseInt(str[2]), Integer.parseInt(str[3]), Integer.parseInt(str[4]));
             listWeapon.add(weapon);
         }
 
