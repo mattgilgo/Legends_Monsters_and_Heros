@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 
 public class LMHSession {
     protected Utility utils;
-    public ArrayList<Hero> chosenHeroesList;
+    public ArrayList<Hero> chosenHeroesList = new ArrayList<Hero>();
     
     public LMHSession(){
         utils = new Utility();
@@ -46,6 +46,7 @@ public class LMHSession {
         List<Sorcerer> listSorcerer = parser.parseSorcerer();
         List<Paladin> listPaladin = parser.parsePaladin();
         List<Hero> heroesList = new ArrayList<>();
+        
 
         System.out.println("CHOOSE YOUR HERO (*smash narrator voice*)");
         System.out.println("");
@@ -76,6 +77,7 @@ public class LMHSession {
         for (int j = 0; j < numHeroes; j++) {
             int choice = utils.getInt("Type in number shown on the left of your choice and hit Enter:");
             System.out.println("Great choice! You've chosen " + heroesList.get(choice-1).getName().toString());
+            System.out.println("Heroes list size: " + heroesList.size());
             this.chosenHeroesList.add(heroesList.get(choice-1));
             System.out.println("");
         }
@@ -113,6 +115,7 @@ public class LMHSession {
         
         while (!control.equals("Q") ||!control.equals("q")) {
             gameWorld.printMap(8);
+            control = "q";
             // Propose move change through Control class (if control class is needed)
             // Check Letter in cell
                 // If impassible "I" in cell
