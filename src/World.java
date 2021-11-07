@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class World {
 
     String[][] backgroundMap;
@@ -5,8 +7,8 @@ public class World {
     public World() {
         this.backgroundMap = new String[][] 
                     {{"M","I","C","M","C","M","M","C"},
-                    {"I","C","M","C","C","M","M","M"},
-                    {"M","M","C","C","C","C","M","C"},
+                    {"C","C","M","C","C","M","M","M"},
+                    {"I","M","C","C","C","C","M","C"},
                     {"C","M","M","M","M","C","M","C"},
                     {"C","C","M","M","M","I","M","I"},
                     {"M","I","C","I","I","C","C","C"},
@@ -16,6 +18,16 @@ public class World {
 
     public String getSpace(int r, int c) {
         return this.backgroundMap[r][c];
+    }
+
+    public boolean isThereAMonster() {
+        Random r = new Random();
+        boolean check = r.nextInt(100) < 50;
+        if (check) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
      /* 

@@ -25,6 +25,10 @@ public abstract class Character {
         this.hp = this.level*100;
     }
 
+    public void setHP(int hp) {
+        this.hp = hp;
+    }
+    
     public int getLevel() {
         return this.level;
     }

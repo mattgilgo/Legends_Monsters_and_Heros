@@ -88,6 +88,14 @@ public class Hero extends Character {
         }
     }
 
+    public boolean canHeroReceiveItem(int itemPrice) {
+        if (this.money >= itemPrice) {
+            return true;
+        } else {
+            return false;
+        }
+    } 
+
     @Override
     public String toString() {
         return ("Name:" + this.getName() +"  HP:" + this.getHP() + "  Level:" + this.getLevel() + "  Start Mana:" + this.getMana() + "  Strength:" + this.getStrength() + "  Agility:" + this.getAgility() + "  Dexterity:" + this.getDexterity() + "  Start Money:" + this.getMoney() + "  Starting XP:" + this.getXP());

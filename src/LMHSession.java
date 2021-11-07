@@ -4,39 +4,92 @@ import java.io.FileNotFoundException;
 public class LMHSession {
     protected Utility utils;
     public ArrayList<Hero> chosenHeroesList = new ArrayList<Hero>();
-    
+    public int heroXPos = 0;
+    public int heroYPos = 0;
+    public World gameMap = new World();
+
+    /*
+    * Constructor Method for Legends: Heroes and Monsters game session
+    */
     public LMHSession(){
-        utils = new Utility();
+        this.utils = new Utility();
     }
 
+    /*
+    * Getter Method for x-position of Heroes
+    */
+    public int getXPos() {
+        return this.heroXPos;
+    }
+
+    /*
+    * Setter Method for x-position of Heroes
+    */
+    public void setXPos(int x) {
+        this.heroXPos = x;
+    }
+
+    /*
+    * Getter Method for y-position of Heroes
+    */
+    public int getYPos() {
+        return this.heroYPos;
+    }
+
+    /*
+    * Setter Method for y-position of Heroes
+    */
+    public void setYPos(int y) {
+        this.heroXPos = y;
+    }
+
+    /*
+    * Method to return what is on the board space
+    */
+    public String returnSpace() {
+        int x = getXPos();
+        int y = getYPos();
+        return this.gameMap.backgroundMap[x][y];
+    }
+
+    /*
+    * Method to make a move on the game board
+    */
     public String makeMove() {
-        String move = "";
-        while (!move.equals("exit")) {
-            move = utils.getString("");
-            if (move.equals("w")) {
-                // move up on gameWorld grid
-                // check board for whats at location to determine next step
-                // check if game is over due to players fainting???
-            } else if (move.equals("a")) {
-                // move left on gameWorld grid
-                // check board for whats at location to determine next step
-                // check if game is over due to players fainting???
-            } else if (move.equals("s")) {
-                // move down on gameWorld grid
-                // check board for whats at location to determine next step
-                // check if game is over due to players fainting???
-            } else if (move.equals("d")) {
-                // move right on gameWorld grid
-                // check board for whats at location to determine next step
-                // check if game is over due to players fainting???
-            } else if (move.equals("exit")) {
-                move = "exit";
-            } else {
-                System.out.println("Please enter the direction (w,a,s,d) you would like to go, or enter 'exit' to end game.");
+        String move = utils.getString("");
+        if (move.equals("W") || move.equals("w")) {
+            int curX = getXPos();
+            int curY = getYPos();
+            if (curY - 1 >= 0 && !this.gameMap.backgroundMap[curX][curY-1].equals("I")) {
+                setYPos(curY-1);
             }
-        } 
+        } else if (move.equals("A") || move.equals("a")) {
+            int curX = getXPos();
+            int curY = getYPos();
+            if (curX - 1 >= 0 && !this.gameMap.backgroundMap[curX-1][curY].equals("I")) {
+                setXPos(curX-1);
+            }
+        } else if (move.equals("S") || move.equals("s")) {
+            int curX = getXPos();
+            int curY = getYPos();
+            if (curY + 1 >= 0 && !this.gameMap.backgroundMap[curX][curY+1].equals("I")) {
+                setYPos(curY+1);
+            }
+        } else if (move.equals("D") || move.equals("d")) {
+            int curX = getXPos();
+            int curY = getYPos();
+            if (curY + 1 >= 0 && !this.gameMap.backgroundMap[curX][curY+1].equals("I")) {
+                setYPos(curY+1);
+            }
+        } else {
+            System.out.println("Please enter the direction (w,a,s,d), or enter 'q' to quit game.");
+        }
         return move;
     }
+
+    /*
+    * Method to generate Hero list at beginning of game
+    */
 
     public void createHeroesList(int numHeroes) throws FileNotFoundException {
         Utility utils = new Utility();
@@ -83,6 +136,44 @@ public class LMHSession {
         }
     }
 
+    /*
+    * Method to generate Monster List for fight
+    */
+    public ArrayList<Monster> monstersForFight(int heroNum) throws FileNotFoundException {
+        TxtParse parser = new TxtParse();
+        List<Dragon> listDragon = parser.parseDragon();
+        List<Exoskeleton> listExoskeleton = parser.parseExoskeleton();
+        List<Spirit> listSpirit = parser.parseSpirit();
+        ArrayList<Monster> monsterList = new ArrayList<Monster>();
+        ArrayList<Monster> chosenMonsterList = new ArrayList<Monster>();
+
+        for (int i = 0; i < listDragon.size(); i++) {
+            monsterList.add(i, listDragon.get(i));
+        }
+        for (int i = 0; i < listExoskeleton.size(); i++) {
+            monsterList.add(i, listExoskeleton.get(i));
+        }
+        for (int i = 0; i < listSpirit.size(); i++) {
+            monsterList.add(i, listSpirit.get(i));
+            //System.out.println("'"+(i+10)+"'" + " = " + listSpirit.get(i).toString());
+        }
+
+        Random r = new Random();
+        for (int j = 0; j < heroNum; j++) {
+            int rndPos = r.nextInt(monsterList.size());
+            chosenMonsterList.add(monsterList.get(rndPos));
+        }
+
+        return chosenMonsterList;
+
+    }
+
+
+
+
+    /*
+    * Method to run Legends: Heroes and Monsters game session
+    */
     public void startSession() throws FileNotFoundException{
         System.out.println("Welcome to Legends: Monsters and Heroes!");
         System.out.println("It is time to start your Quest.");
@@ -106,18 +197,34 @@ public class LMHSession {
             System.out.println("Please enter a '1','2', or '3' to select number of Heroes. Resetting game.");
             startSession();
         }
-
         createHeroesList(heroNumber);
 
-        // Initialize game world
-        World gameWorld = new World();
         String control = "";
-        
-        while (!control.equals("Q") ||!control.equals("q")) {
+        while (!control.equals("Q") && !control.equals("q")) {
+            // Initialize game world
+            World gameWorld = new World();
             gameWorld.printMap(8);
-            control = "q";
-            // Propose move change through Control class (if control class is needed)
-            // Check Letter in cell
+            String s = this.gameMap.backgroundMap[getXPos()][getYPos()];
+            
+            control = makeMove();
+            String str = returnSpace();
+                if (str.equals("M")) {
+                    System.out.println("Would you like to enter the market?");
+                    String inOrOut = utils.getString("Enter 'e' to go in. Enter any other character to pass.");
+                    if (inOrOut.equals("e") || inOrOut.equals("E")) {
+                        Market market = new Market();
+                        this.chosenHeroesList = market.shoppingTrip(this.chosenHeroesList);
+                    }
+                } else if (str.equals("C")) {
+                    boolean monster = gameWorld.isThereAMonster();
+                    if (monster) {
+                        ArrayList<Monster> monstersList = monstersForFight(heroNumber);
+                        Fight fight = new Fight(this.chosenHeroesList, monstersList);
+                        fight.startFight();
+                    } else {
+                        continue;
+                    }
+                }
                 // If impassible "I" in cell
                     // print that you cant move there and let cycle through
                 // If Market "M" in cell

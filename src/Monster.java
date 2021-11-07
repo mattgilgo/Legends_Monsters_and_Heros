@@ -1,6 +1,6 @@
-import java.util.*;
 
-public class Monster extends Character {
+
+public class Monster extends Character{
     int attack = 0;
     int defense = 0;
     int evade = 0;
