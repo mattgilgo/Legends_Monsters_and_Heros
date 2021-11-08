@@ -4,9 +4,9 @@ import java.io.FileNotFoundException;
 public class LMHSession {
     protected Utility utils;
     public ArrayList<Hero> chosenHeroesList = new ArrayList<Hero>();
-    public int heroXPos = 0;
-    public int heroYPos = 0;
     public World gameMap = new World();
+    public static int heroXPos = 0;
+    public static int heroYPos = 0;
 
     /*
     * Constructor Method for Legends: Heroes and Monsters game session
@@ -19,78 +19,79 @@ public class LMHSession {
     * Getter Method for x-position of Heroes
     */
     public int getXPos() {
-        return this.heroXPos;
+        return heroXPos;
     }
 
     /*
     * Setter Method for x-position of Heroes
     */
     public void setXPos(int x) {
-        this.heroXPos = x;
+        heroXPos = x;
     }
 
     /*
     * Getter Method for y-position of Heroes
     */
     public int getYPos() {
-        return this.heroYPos;
+        return heroYPos;
     }
 
     /*
     * Setter Method for y-position of Heroes
     */
     public void setYPos(int y) {
-        this.heroXPos = y;
+        heroYPos = y;
     }
 
-    /*
-    * Method to return what is on the board space
-    */
-    public String returnSpace() {
-        int x = getXPos();
-        int y = getYPos();
-        return this.gameMap.backgroundMap[x][y];
-    }
-
-    /*
-    * Method to make a move on the game board
-    */
     public String makeMove() {
-        String move = utils.getString("");
-        if (move.equals("W") || move.equals("w")) {
-            int curX = getXPos();
-            int curY = getYPos();
+        String move = utils.getString("Please enter the direction (w,a,s,d), 'log' to see Hero stats, or enter 'q' to quit game.");
+        if (move.equals("A") || move.equals("a")) {
+            int curX = heroXPos;
+            int curY = heroYPos;
             if (curY - 1 >= 0 && !this.gameMap.backgroundMap[curX][curY-1].equals("I")) {
                 setYPos(curY-1);
             }
-        } else if (move.equals("A") || move.equals("a")) {
-            int curX = getXPos();
-            int curY = getYPos();
+        } else if (move.equals("W") || move.equals("w")) {
+            int curX = heroXPos;
+            int curY = heroYPos;
             if (curX - 1 >= 0 && !this.gameMap.backgroundMap[curX-1][curY].equals("I")) {
                 setXPos(curX-1);
             }
-        } else if (move.equals("S") || move.equals("s")) {
-            int curX = getXPos();
-            int curY = getYPos();
-            if (curY + 1 >= 0 && !this.gameMap.backgroundMap[curX][curY+1].equals("I")) {
-                setYPos(curY+1);
-            }
         } else if (move.equals("D") || move.equals("d")) {
-            int curX = getXPos();
-            int curY = getYPos();
+            int curX = heroXPos;
+            int curY = heroYPos;
             if (curY + 1 >= 0 && !this.gameMap.backgroundMap[curX][curY+1].equals("I")) {
                 setYPos(curY+1);
             }
+        } else if (move.equals("S") || move.equals("s")) {
+            int curX = heroXPos;
+            int curY = heroYPos;
+            if (curY + 1 >= 0 && !this.gameMap.backgroundMap[curX+1][curY].equals("I")) {
+                setXPos(curX+1);
+            }
+        } else if (move.equals("log")) { 
+            System.out.println("Hero Log:");
+            for (int r = 0; r < this.chosenHeroesList.size(); r++) {
+                System.out.println(this.chosenHeroesList.get(r).toString());
+            }
+        } else if (move.equals("Q") || move.equals("q")) {
+            return move;
         } else {
-            System.out.println("Please enter the direction (w,a,s,d), or enter 'q' to quit game.");
+            System.out.println("Incorrect Entry. Please enter the direction (w,a,s,d), or enter 'q' to quit game.");
         }
         return move;
     }
 
     /*
+    * Method to return what is on the board space
+    */
+    public String returnSpace(int x, int y) {
+        return this.gameMap.currentMap[x][y];
+    }
+
+    /*
     * Method to generate Hero list at beginning of game
     */
-
     public void createHeroesList(int numHeroes) throws FileNotFoundException {
         Utility utils = new Utility();
 
@@ -127,13 +128,22 @@ public class LMHSession {
 
         System.out.println("^^^ Choose Hero from above. ^^^");
 
+        int choice = 0;
         for (int j = 0; j < numHeroes; j++) {
-            int choice = utils.getInt("Type in number shown on the left of your choice and hit Enter:");
-            System.out.println("Great choice! You've chosen " + heroesList.get(choice-1).getName().toString());
-            System.out.println("Heroes list size: " + heroesList.size());
-            this.chosenHeroesList.add(heroesList.get(choice-1));
-            System.out.println("");
+            choice = utils.getInt("Type in number shown on the left of your choice and hit Enter:");
+            if (choice < 1 || choice > heroesList.size()-1) {
+                continue;
+            } else {
+                System.out.println("Great choice! You've chosen " + heroesList.get(choice-1).getName().toString() + ".");
+                this.chosenHeroesList.add(heroesList.get(choice-1));
+                System.out.println("");
+            }
         }
+        if (choice < 1 || choice > heroesList.size()-1 || chosenHeroesList.size() != numHeroes) {
+            System.out.println("Incorrect Hero selection, please start over.");
+            createHeroesList(numHeroes);
+        } 
+        
     }
 
     /*
@@ -155,7 +165,6 @@ public class LMHSession {
         }
         for (int i = 0; i < listSpirit.size(); i++) {
             monsterList.add(i, listSpirit.get(i));
-            //System.out.println("'"+(i+10)+"'" + " = " + listSpirit.get(i).toString());
         }
 
         Random r = new Random();
@@ -167,9 +176,6 @@ public class LMHSession {
         return chosenMonsterList;
 
     }
-
-
-
 
     /*
     * Method to run Legends: Heroes and Monsters game session
@@ -203,11 +209,16 @@ public class LMHSession {
         while (!control.equals("Q") && !control.equals("q")) {
             // Initialize game world
             World gameWorld = new World();
+            gameWorld.setHeroSpace(heroXPos, heroYPos);
             gameWorld.printMap(8);
-            String s = this.gameMap.backgroundMap[getXPos()][getYPos()];
-            
             control = makeMove();
-            String str = returnSpace();
+            if (control.equals("q") || control.equals("Q")) {
+                break;
+            }
+            System.out.println("");
+            System.out.println("Good move!");
+            System.out.println("");
+            String str = returnSpace(heroXPos,heroYPos);
                 if (str.equals("M")) {
                     System.out.println("Would you like to enter the market?");
                     String inOrOut = utils.getString("Enter 'e' to go in. Enter any other character to pass.");
@@ -225,18 +236,6 @@ public class LMHSession {
                         continue;
                     }
                 }
-                // If impassible "I" in cell
-                    // print that you cant move there and let cycle through
-                // If Market "M" in cell
-                    // update spot on map
-                    // enter market and execute buying/selling/etc
-                // If Common Cell "C"
-                    // update spot on map
-                    // roll dice to see if there is a Monster there
-                    // if yes
-                        // execute fight function
-                    // if no
-                        // let cycle through 
         }
 
         System.out.println("Thank you for playing. Looking forward to seeing you here next time!");

@@ -26,48 +26,48 @@ public class Market {
             Random r = new Random();
             boolean check = r.nextInt(100) < 33;
             if (check) {
+                listArmor.get(i).setType("Armor");
                 this.inventory.add(listArmor.get(i));
-                //System.out.println("'"+(i+1)+"'" + " = " + listArmor.get(i).toString());
             }
         }
         for (int i = 0; i < listPotion.size(); i++) {
             Random r = new Random();
             boolean check = r.nextInt(100) < 33;
             if (check) {
+                listPotion.get(i).setType("Potion");
                 this.inventory.add(listPotion.get(i));
-                //System.out.println("'"+(i+1)+"'" + " = " + listPotion.get(i).toString());
             }
         }
         for (int i = 0; i < listFireSpell.size(); i++) {
             Random r = new Random();
             boolean check = r.nextInt(100) < 33;
             if (check) {
+                listFireSpell.get(i).setType("Spell");
                 this.inventory.add(listFireSpell.get(i));
-                //System.out.println("'"+(i+1)+"'" + " = " + listFireSpell.get(i).toString());
             }
         }
         for (int i = 0; i < listIceSpell.size(); i++) {
             Random r = new Random();
             boolean check = r.nextInt(100) < 33;
             if (check) {
+                listIceSpell.get(i).setType("Spell");
                 this.inventory.add(listIceSpell.get(i));
-                //System.out.println("'"+(i+1)+"'" + " = " + listIceSpell.get(i).toString());
             }
         }
         for (int i = 0; i < listLightningSpell.size(); i++) {
             Random r = new Random();
             boolean check = r.nextInt(100) < 33;
             if (check) {
+                listLightningSpell.get(i).setType("Spell");
                 this.inventory.add(listLightningSpell.get(i));
-                //System.out.println("'"+(i+1)+"'" + " = " + listLightningSpell.get(i).toString());
             }
         }
         for (int i = 0; i < listWeapon.size(); i++) {
             Random r = new Random();
             boolean check = r.nextInt(100) < 33;
             if (check) {
+                listWeapon.get(i).setType("Weapon");
                 this.inventory.add(listWeapon.get(i));
-                //System.out.println("'"+(i+1)+"'" + " = " + listWeapon.get(i).toString());
             }
         }
     }
@@ -80,9 +80,9 @@ public class Market {
     
     // Method for buying item from market
     public Item getItem(int index) {
-        Item armor = this.inventory.get(index);
+        Item item = this.inventory.get(index);
         this.inventory.remove(index);
-        return armor;
+        return item;
     }
 
     // Method for stocking/selling item from market
@@ -102,6 +102,7 @@ public class Market {
                 }
                 int heroIndex = utils.getInt("Which Hero would you like to equip this item too?");
                 if (heroesList.get(heroIndex-1).canHeroReceiveItem(this.inventory.get(itemChoice).getPrice())) {
+
                     if (this.inventory.get(itemChoice).getType().equals("Armor")) {
                         heroesList.get(heroIndex-1).heroArmor.add((Armor)getItem(itemChoice-1));
                     } else if (this.inventory.get(itemChoice).getType().equals("Potion")) {

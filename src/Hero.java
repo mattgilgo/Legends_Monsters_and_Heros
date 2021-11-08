@@ -8,11 +8,11 @@ public class Hero extends Character {
     double agility = 0;
     double money = 0;
     double xp = 0;
-    int[][] currentSpace = {{0},{0}};
     ArrayList<Armor> heroArmor = new ArrayList<Armor>();
     ArrayList<Potion> heroPotion = new ArrayList<Potion>();
     ArrayList<Spell> heroSpell = new ArrayList<Spell>();
     ArrayList<Weapon> heroWeapon = new ArrayList<Weapon>();
+    Utility utils = new Utility();
 
     public Hero(String name, int level, double mana, double strength, double agility, double dexterity, double startMoney, int xp) {
         super(name, level);
@@ -60,7 +60,7 @@ public class Hero extends Character {
     }
 
     public double getMoney() {
-        return this.agility;
+        return this.money;
     }
 
     public void setMoney(double money) {
@@ -93,7 +93,7 @@ public class Hero extends Character {
     }
 
     public boolean canHeroReceiveItem(double itemPrice) {
-        if (this.money >= itemPrice) {
+        if (this.getMoney() >= itemPrice) {
             return true;
         } else {
             return false;
@@ -102,7 +102,7 @@ public class Hero extends Character {
 
     @Override
     public String toString() {
-        return ("Name:" + this.getName() +"  HP:" + this.getHP() + "  Level:" + this.getLevel() + "  Start Mana:" + this.getMana() + "  Strength:" + this.getStrength() + "  Agility:" + this.getAgility() + "  Dexterity:" + this.getDexterity() + "  Start Money:" + this.getMoney() + "  Starting XP:" + this.getXP());
+        return ("Name:" + this.getName() +"  HP:" + this.getHP() + "  Level:" + this.getLevel() + "  Mana:" + this.getMana() + "  Strength:" + this.getStrength() + "  Agility:" + this.getAgility() + "  Dexterity:" + this.getDexterity() + "  Money:" + this.getMoney() + "  XP:" + this.getXP());
     }
 
 }

@@ -29,6 +29,8 @@ public class Spell extends Item {
         this.manaCost = manaCost;
     }
 
+
+
     @Override
     public String toString() {
         return ("Name:" + this.getName() +"  Cost:" + this.getPrice() + "  Required Level:" + this.getMinLevel() + "  Damage:" + this.getDamage() + "  Mana Cost:" + this.getManaCost());
