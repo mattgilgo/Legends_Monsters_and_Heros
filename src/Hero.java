@@ -2,15 +2,19 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Hero extends Character {
-    int mana = 0;
-    int strength = 0;
-    int dexterity = 0;
-    int agility = 0;
-    int money = 0;
-    int xp = 0;
+    double mana = 0;
+    double strength = 0;
+    double dexterity = 0;
+    double agility = 0;
+    double money = 0;
+    double xp = 0;
     int[][] currentSpace = {{0},{0}};
+    ArrayList<Armor> heroArmor = new ArrayList<Armor>();
+    ArrayList<Potion> heroPotion = new ArrayList<Potion>();
+    ArrayList<Spell> heroSpell = new ArrayList<Spell>();
+    ArrayList<Weapon> heroWeapon = new ArrayList<Weapon>();
 
-    public Hero(String name, int level, int mana, int strength, int agility, int dexterity, int startMoney, int xp) {
+    public Hero(String name, int level, double mana, double strength, double agility, double dexterity, double startMoney, int xp) {
         super(name, level);
         setMana(mana);
         setStrength(strength);
@@ -23,51 +27,51 @@ public class Hero extends Character {
         // put faint code here
     }
 
-    public int getMana() {
+    public double getMana() {
         return this.mana;
     }
 
-    public void setMana(int mana) {
+    public void setMana(double mana) {
         this.mana = mana;
     }
 
-    public int getStrength() {
+    public double getStrength() {
         return this.strength;
     }
 
-    public void setStrength(int strength) {
+    public void setStrength(double strength) {
         this.strength = strength;
     }
 
-    public int getDexterity() {
+    public double getDexterity() {
         return this.dexterity;
     }
 
-    public void setDexterity(int dexterity) {
+    public void setDexterity(double dexterity) {
         this.dexterity = dexterity;
     }
 
-    public int getAgility() {
+    public double getAgility() {
         return this.agility;
     }
 
-    public void setAgility(int agility) {
+    public void setAgility(double agility) {
         this.agility = agility;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return this.agility;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
-    public int getXP() {
+    public double getXP() {
         return this.xp;
     }
 
-    public void setXP(int xp) {
+    public void setXP(double xp) {
         this.xp = xp;
     }
 
@@ -88,7 +92,7 @@ public class Hero extends Character {
         }
     }
 
-    public boolean canHeroReceiveItem(int itemPrice) {
+    public boolean canHeroReceiveItem(double itemPrice) {
         if (this.money >= itemPrice) {
             return true;
         } else {

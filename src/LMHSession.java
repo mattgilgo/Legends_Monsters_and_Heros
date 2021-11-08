@@ -220,7 +220,7 @@ public class LMHSession {
                     if (monster) {
                         ArrayList<Monster> monstersList = monstersForFight(heroNumber);
                         Fight fight = new Fight(this.chosenHeroesList, monstersList);
-                        fight.startFight();
+                        fight.doFight();
                     } else {
                         continue;
                     }

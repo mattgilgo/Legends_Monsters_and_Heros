@@ -1,7 +1,8 @@
 public abstract class Character {
     String name = "";
-    int hp = 0;
+    double hp = 0;
     int level = 0;
+    String type = "";
 
     public Character(String name, int level) {
         setName(name);
@@ -17,15 +18,15 @@ public abstract class Character {
         this.name = name;
     }
 
-    public int getHP() {
+    public double getHP() {
         return this.hp;
     }
 
     public void setHP() {
-        this.hp = this.level*100;
+        this.hp = (double)this.level*100;
     }
 
-    public void setHP(int hp) {
+    public void setHP(double hp) {
         this.hp = hp;
     }
     

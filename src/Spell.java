@@ -1,6 +1,7 @@
 public class Spell extends Item {
-    int damage = 0;
-    int manaCost = 0;
+    double damage = 0;
+    double manaCost = 0;
+    String type = "Spell";
 
     public Spell(String name, int price, int minLevel) {
         super(name, price, minLevel);
@@ -12,7 +13,7 @@ public class Spell extends Item {
         setManaCost(manaCost);
     }
 
-    public int getDamage() {
+    public double getDamage() {
         return this.damage;
     }
 
@@ -20,7 +21,7 @@ public class Spell extends Item {
         this.damage = damage;
     }
 
-    public int getManaCost() {
+    public double getManaCost() {
         return this.manaCost;
     }
 
