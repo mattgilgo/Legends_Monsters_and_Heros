@@ -17,6 +17,7 @@ public class Hero extends Character {
     ArrayList<Weapon> heroWeapon = new ArrayList<Weapon>();
     Utility utils = new Utility();
 
+    // Constructor method for Hero
     public Hero(String name, int level, double mana, double strength, double agility, double dexterity, double startMoney, int xp) {
         super(name, level);
         setMana(mana);
@@ -25,59 +26,68 @@ public class Hero extends Character {
         setDexterity(dexterity);
         setMoney(startMoney);
     }
-
-    public void faint() {
-        // put faint code here
-    }
-
+    
+    // Getter method for Hero Mana
     public double getMana() {
         return this.mana;
     }
 
+    // Setter method for Hero Mana
     public void setMana(double mana) {
         this.mana = mana;
     }
 
+    // Getter method for Hero Strength
     public double getStrength() {
         return this.strength;
     }
 
+    // Setter method for Hero Strength
     public void setStrength(double strength) {
         this.strength = strength;
     }
 
+    // Getter method for Hero Dexterity
     public double getDexterity() {
         return this.dexterity;
     }
 
+    // Setter method for Hero Dexterity
     public void setDexterity(double dexterity) {
         this.dexterity = dexterity;
     }
 
+    // Getter method for Hero Agility
     public double getAgility() {
         return this.agility;
     }
 
+    // Setter method for Hero Agility
     public void setAgility(double agility) {
         this.agility = agility;
     }
 
+    // Getter method for Hero Money
     public double getMoney() {
         return this.money;
     }
 
+    // Setter method for Hero Money
     public void setMoney(double money) {
         this.money = money;
     }
 
+    // Getter method for Hero XP
     public double getXP() {
         return this.xp;
     }
 
+    // Setter method for Hero XP
     public void setXP(double xp) {
         this.xp = xp;
     }
 
+    // Method for game players to see which Heroes they can choose from at the begining of the game
     public void chooseHeroesOptions() throws FileNotFoundException {
         TxtParse parser = new TxtParse();
         List<Warrior> listWarrior = parser.parseWarrior();
@@ -95,6 +105,7 @@ public class Hero extends Character {
         }
     }
 
+    // Method to check whether or not the Hero can afford a selected item in the Market
     public boolean canHeroReceiveItem(double itemPrice) {
         if (this.getMoney() >= itemPrice) {
             return true;
@@ -103,6 +114,7 @@ public class Hero extends Character {
         }
     } 
 
+    // Overrides toString method to print out Weapon information
     @Override
     public String toString() {
         return ("Name:" + this.getName() +"  HP:" + this.getHP() + "  Level:" + this.getLevel() + "  Mana:" + this.getMana() + "  Strength:" + this.getStrength() + "  Agility:" + this.getAgility() + "  Dexterity:" + this.getDexterity() + "  Money:" + this.getMoney() + "  XP:" + this.getXP());
