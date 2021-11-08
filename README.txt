@@ -6,6 +6,10 @@ BUID: U43413276
 
 How to run program --> Call the Main.java file to run program, then play game as prompted in script.
 
+Bonuses:
++5 TxtParse.java is a text parser
++10 Design Patterns: The factory pattern was used for all Characters and Items in the game
+
 Classes:
 Utility - class to handle error checking for user inputs.
 TxtParse - class to handle all txt file read-ins and initialize Items/Characters

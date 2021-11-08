@@ -6,6 +6,7 @@ public class Monster extends Character{
     double defense = 0;
     double evade = 0;
     
+    // Constructor method for Monster
     public Monster(String name, int level, double attack, double defense, double evade) {
         super(name, level);
         setAttack(attack);

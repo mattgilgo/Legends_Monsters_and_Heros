@@ -8,49 +8,68 @@ public class Fight {
     ArrayList<Monster> monstersFighting;
     Utility utils = new Utility();
 
+    // Constructor method for a heroes vs. monsters battle.
     public Fight(ArrayList<Hero> heroes, ArrayList<Monster> monsters) {
         this.heroesFighting = heroes;
         this.monstersFighting = monsters;
     }
 
+    // Method for what occurs during a the Heroes' turn in the battle. Outputs Double array of Hero and Monster HP.
     public Double[] heroesTurn() {
+        // For each hero used in game, do a turn
         for (int i = 0; i < this.heroesFighting.size(); i++) {
+
+            // Choose from various options for turn
             System.out.println("Hero "+ (i+1) +": What move would you like to make?");
             System.out.println("'1' - Attack");
             System.out.println("'2' - Magic");
             System.out.println("'3' - Potion");
             System.out.println("'4' - Change Equipment");
             int action = this.utils.getInt("Enter choice here: ");
-            if (action == 1) {
+
+            if (action == 1) {  // If attack is chosen, attack Monster
                 double attackPwr = 0;
-                if (this.heroesFighting.get(i).heroWeapon.size() > 0) {
+
+                if (this.heroesFighting.get(i).heroWeapon.size() > 0) { // If holding a weapon, damage to monster will be this
                     attackPwr = (this.heroesFighting.get(i).getStrength()+this.heroesFighting.get(i).heroWeapon.get(0).getDamage())*0.05;
-                } else {
+                } else {    // If not holding a weapon, damage to Monster will be this
                     attackPwr = this.heroesFighting.get(i).getStrength()*0.05;
                 }
+
+                // Check if Monster dodged attack
                 Random r = new Random();
                 boolean check = r.nextInt(100) < this.monstersFighting.get(i).getEvade();
-                if (check) {
+                if (check) { // if the Monster dodged the attack
                     System.out.println("Monster dodged attack!");
-                } else {
+                } else { // if the Monster did not dodge the attack
                     this.monstersFighting.get(i).setHP(this.monstersFighting.get(i).getHP()-attackPwr);
                     System.out.println("Hero inflicted " + attackPwr + " damage on Monster!");
                 }
-            } else if (action == 2) {
-                if (this.heroesFighting.get(i).heroSpell.size() == 0) {
+
+            } else if (action == 2) { // If Spell is chosen, use spell on Monster
+                if (this.heroesFighting.get(i).heroSpell.size() == 0) { // If Hero has no spells in inventory
                     System.out.println("Your hero cannot cast magic because he has no spells!");
-                } else {
+                
+                } else { // If hero does have spells in inventory
+                    
+                    // Check if Monster dodged spell
                     Random r = new Random();
                     boolean check = r.nextInt(100) < this.monstersFighting.get(i).getEvade();
-                    if (check) {
+
+                    if (check) { // if the Monster dodged the spell
                         System.out.println("Monster dodged spell!");
-                    } else {
+
+                    } else { // if the Monster did not dodge the spell
+        
+                        // Choose spell
                         System.out.println("Choose Spell to cast:");
                         for (int k = 0; k < this.heroesFighting.get(i).heroSpell.size(); k++) {
                             System.out.println((k+1) + " - " + this.heroesFighting.get(i).heroSpell.get(k).toString());
                         }
                         int spellChoice = this.utils.getInt("Enter choice: ");
                         double spellPwr = this.heroesFighting.get(i).heroSpell.get(spellChoice-1).getDamage();
+
+                        // Cast spell
                         this.monstersFighting.get(i).setHP(this.monstersFighting.get(i).getHP()-heroesFighting.get(i).heroSpell.get(spellChoice-1).getDamage());
                         Random ra = new Random();
                         int ran = ra.nextInt(3);
@@ -66,10 +85,13 @@ public class Fight {
                         }
                     }
                 }
-            } else if (action == 3) {
-                if (this.heroesFighting.get(i).heroPotion.size() == 0) {
+
+            } else if (action == 3) { // If Potion is chosen, use Potion on hero
+                if (this.heroesFighting.get(i).heroPotion.size() == 0) { // If Hero has no potions in inventory
                     System.out.println("Your hero cannot take potions because he has none!");
-                } else {
+                } else { // If Hero has potions in inventory
+
+                    // Choose potion
                     System.out.println("Choose Potion to use:");
                     for (int k = 0; k < this.heroesFighting.get(i).heroPotion.size(); k++) {
                         System.out.println((k+1) + " - " + this.heroesFighting.get(i).heroPotion.get(k).toString());
@@ -77,6 +99,8 @@ public class Fight {
                     int potionChoice = this.utils.getInt("Enter choice: ");
                     double potionPwr = this.heroesFighting.get(i).heroPotion.get(potionChoice-1).getAttrAdded();
                     Potion potionUsed = this.heroesFighting.get(i).heroPotion.get(potionChoice-1);
+
+                    // Use potion
                     if (potionUsed.getName().equals("Ambrosia")) {
                         this.heroesFighting.get(i).setHP(this.heroesFighting.get(i).getHP()+potionPwr);
                         this.heroesFighting.get(i).setMana(this.heroesFighting.get(i).getMana()+potionPwr);
@@ -104,9 +128,11 @@ public class Fight {
                         System.out.println("Hero's HP increased by " + potionPwr);
                     }
                 }
-            } else if (action == 4) {
+
+            } else if (action == 4) { // If Change Armor/Weapons is chosen
+                // Choose to change either Armor or Weapon
                 int aOrw = utils.getInt("Enter '1' to change your Armor and '2' to change your Weapon.");
-                if (aOrw == 1) {
+                if (aOrw == 1) { // Change Armor
                     System.out.println("Choose which Armor you would like to use");
                     for (int g = 0; g < this.heroesFighting.get(i).heroArmor.size(); g++) {
                         System.out.println((g+1) + " - " + this.heroesFighting.get(i).heroArmor.get(g).toString());
@@ -119,7 +145,7 @@ public class Fight {
                     this.heroesFighting.get(i).heroArmor.add(0, newA);
                     this.heroesFighting.get(i).heroArmor.add(armorPick-1, oldA);
                     System.out.println("New Armor equipped!");
-                } else if (aOrw == 2) {
+                } else if (aOrw == 2) { // Change Weapon
                     System.out.println("Choose which Weapon you would like to use");
                     for (int g = 0; g < this.heroesFighting.get(i).heroWeapon.size(); g++) {
                         System.out.println((g+1) + " - " + this.heroesFighting.get(i).heroWeapon.get(g).toString());
@@ -132,17 +158,17 @@ public class Fight {
                     this.heroesFighting.get(i).heroWeapon.add(0, newW);
                     this.heroesFighting.get(i).heroWeapon.add(armorPick-1, oldW);
                     System.out.println("New Weapon equipped!");
-                } else {
+                } else { // Start Armor/Weapon swap over again if player does not pick Armor or Weapon
                     System.out.println("Wrong selection, retry turn!");
                     heroesTurn();
                 }
-            } else {
+            } else { // Start turn over again if player does not pick between Attack, Spell, Potion, or Change Armor/Weapon
                 System.out.println("Wrong selection, retry turn!");
                 heroesTurn();
             }
         } 
 
-        // End of round
+        // End of round HP checks
         double remainingHeroesHP = 0;
         double remainingMonstersHP = 0;
         System.out.println("");
@@ -163,14 +189,14 @@ public class Fight {
         }
         System.out.println("");
 
+        // Array of type Double for returning Hero and Monster HP after Heroes' turn
         Double[] ar = new Double[2];
         ar[0] = remainingHeroesHP;
         ar[1] = remainingMonstersHP;
-        
         return ar;
-        
     }
 
+    // Method for what occurs during a the Monsters' turn in the battle. Outputs Double array of Hero and Monster HP.
     public Double[] monstersTurn() {
         for (int i = 0; i < this.monstersFighting.size(); i++) {
             Random r = new Random();
@@ -185,7 +211,7 @@ public class Fight {
             }
         }
 
-        // End of round
+        // End of round HP checks
         double remainingHeroesHP = 0;
         double remainingMonsterHP = 0;
         System.out.println("");
@@ -203,13 +229,14 @@ public class Fight {
         }
         System.out.println("");
 
+    // Array of type Double for returning Hero and Monster HP after Heroes' turn
         Double[] ar = new Double[2];
         ar[0] = remainingHeroesHP;
         ar[1] = remainingMonsterHP;
-        
         return ar;
     }
 
+    // Acts as main method for Fight class. Call this on Fight Object to begin fight.
     public void doFight() {
         double heroesHP = 0;
         double monstersHP = 0;

@@ -8,6 +8,7 @@ public class World {
     String[][] backgroundMap;
     String[][] currentMap;
 
+    // Constructor method for the game map.
     public World() {
         this.backgroundMap = new String[][] 
                     {{"M","I","C","M","C","M","M","C"},
@@ -29,14 +30,17 @@ public class World {
                     {"C","M","C","C","M","M","I","I"}};
     }
 
+    // Getter method for what exists in the game map (market, monster, impassible).
     public String getSpace(int r, int c) {
         return this.backgroundMap[r][c];
     }
 
+    // Setter method to show where hero is on printed map.
     public void setHeroSpace(int r, int c) {
         this.currentMap[r][c] = "H";
     }
 
+    // Method to check if a monster exists in a Common space.
     public boolean isThereAMonster() {
         Random r = new Random();
         int ran = r.nextInt(100);
@@ -48,14 +52,8 @@ public class World {
         }
     }
 
-    public String[][] resetMap() {
-        return this.backgroundMap;
-    }
-
-
-     /* 
-     * A method used to print the map of the World.
-     */   
+      
+    // Method used to print the map of the World.   
     public void printMap(int n) {
         System.out.print(" ");
         for (int i = 0; i < n; i++) {

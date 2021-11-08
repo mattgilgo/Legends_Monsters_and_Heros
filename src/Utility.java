@@ -1,20 +1,23 @@
+import java.util.*;
+
 /*
 * Utility - class to handle error checking for user inputs.
 */
-import java.util.*;
-
 public class Utility {
     Scanner scan;
 
+    // Constructor method for Utility
     public Utility(){
         scan = new Scanner(System.in);
     }
 
+    // Method for user input of a string
     public String getString(String prompt){
         System.out.println(prompt);
         return scan.nextLine();
     }
 
+    // Method for user input of a double
     public double getDouble(String prompt) {
         System.out.println(prompt);
         try {
@@ -26,6 +29,7 @@ public class Utility {
         
     }
 
+    // Method for user input of a integer
     public int getInt(String prompt){
         System.out.println(prompt);
         try {
@@ -36,6 +40,7 @@ public class Utility {
         }
     }
 
+    // Method for user input of a boolean
     public boolean getYesNo(String prompt) {
         System.out.println(prompt);
         String response = scan.nextLine();
