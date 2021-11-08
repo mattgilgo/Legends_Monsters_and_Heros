@@ -1,4 +1,5 @@
 public class IceSpell extends Spell {
+    String typeSpell = "IceSpell";
     
     // Constructor method for IceSpell object
     public IceSpell(String name, int price, int minLevel, int damage, int manaCost) {

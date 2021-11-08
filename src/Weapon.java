@@ -1,6 +1,7 @@
 public class Weapon extends Item {
-    int damage = 0;
+    double damage = 0;
     int reqHands = 0;
+    String type = "Weapon";
 
     public Weapon(String name, int price, int minLevel) {
         super(name, price, minLevel);
@@ -12,7 +13,7 @@ public class Weapon extends Item {
         setReqHands(reqHands);
     }
 
-    public int getDamage() {
+    public double getDamage() {
         return this.damage;
     }
 
@@ -32,5 +33,4 @@ public class Weapon extends Item {
     public String toString() {
         return ("Name:" + this.getName() +"  Cost:" + this.getPrice() + "  Required Level:" + this.getMinLevel() + "  Damage:" + this.getDamage() + "  Required Hands:" + this.getReqHands());
     }
-}
 }

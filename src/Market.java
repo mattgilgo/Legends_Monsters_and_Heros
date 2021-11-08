@@ -3,6 +3,7 @@ import java.util.*;
 
 public class Market {
     ArrayList<Item> inventory;
+    
 
     Utility utils = new Utility();
     
@@ -79,9 +80,9 @@ public class Market {
     
     // Method for buying item from market
     public Item getItem(int index) {
-        Item item = this.inventory.get(index);
+        Item armor = this.inventory.get(index);
         this.inventory.remove(index);
-        return item;
+        return armor;
     }
 
     // Method for stocking/selling item from market
@@ -101,7 +102,15 @@ public class Market {
                 }
                 int heroIndex = utils.getInt("Which Hero would you like to equip this item too?");
                 if (heroesList.get(heroIndex-1).canHeroReceiveItem(this.inventory.get(itemChoice).getPrice())) {
-                    getItem(itemChoice-1);
+                    if (this.inventory.get(itemChoice).getType().equals("Armor")) {
+                        heroesList.get(heroIndex-1).heroArmor.add((Armor)getItem(itemChoice-1));
+                    } else if (this.inventory.get(itemChoice).getType().equals("Potion")) {
+                        heroesList.get(heroIndex-1).heroPotion.add((Potion)getItem(itemChoice-1));
+                    } else if (this.inventory.get(itemChoice).getType().equals("Spell")) {
+                        heroesList.get(heroIndex-1).heroSpell.add((Spell)getItem(itemChoice-1));
+                    } else {
+                        heroesList.get(heroIndex-1).heroWeapon.add((Weapon)getItem(itemChoice-1));
+                    }
                 } else {
                     System.out.println("That hero cannot receive that item!");
                 }  

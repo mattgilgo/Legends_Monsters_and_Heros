@@ -1,4 +1,5 @@
 public class FireSpell extends Spell {
+    String typeSpell = "FireSpell";
     
     // Constructor method for FireSpell object
     public FireSpell(String name, int price, int minLevel, int damage, int manaCost) {

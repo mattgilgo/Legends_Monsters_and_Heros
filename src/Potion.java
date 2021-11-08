@@ -1,6 +1,7 @@
 public class Potion extends Item {
-    int attrAdded = 0;
+    double attrAdded = 0;
     String attrAffected = "";
+    String type = "Potion";
 
     public Potion(String name, int price, int minLevel) {
         super(name, price, minLevel);
@@ -12,7 +13,7 @@ public class Potion extends Item {
         setAttrAffected(attrAffected);
     }
 
-    public int getAttrAdded() {
+    public double getAttrAdded() {
         return this.attrAdded;
     }
 

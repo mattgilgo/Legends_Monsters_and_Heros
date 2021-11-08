@@ -1,5 +1,6 @@
 public class Armor extends Item {
-    int damageReduc = 0;
+    double damageReduc = 0;
+    String type = "Armor";
 
     public Armor(String name, int price, int minLevel) {
         super(name, price, minLevel);
@@ -10,11 +11,11 @@ public class Armor extends Item {
         setDamageReduc(damageReduc);
     }
 
-    public int getDamageReduc() {
+    public double getDamageReduc() {
         return this.damageReduc;
     }
 
-    public void setDamageReduc(int damageReduc) {
+    public void setDamageReduc(double damageReduc) {
         this.damageReduc = damageReduc;
     }
     

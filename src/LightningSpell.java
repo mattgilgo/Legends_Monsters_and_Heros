@@ -1,4 +1,5 @@
 public class LightningSpell extends Spell {
+    String typeSpell = "LightningSpell";
 
         // Constructor method for LightningSpell object
         public LightningSpell(String name, int price, int minLevel, int damage, int manaCost) {
