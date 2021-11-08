@@ -1,5 +1,6 @@
-
-
+/*
+* Monster - extends Character, Subclass and parent in Factory design pattern, contains variables and methods for Monster level.
+*/
 public class Monster extends Character{
     double attack = 0;
     double defense = 0;

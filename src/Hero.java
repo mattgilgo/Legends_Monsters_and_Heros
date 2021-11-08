@@ -1,6 +1,9 @@
 import java.io.FileNotFoundException;
 import java.util.*;
 
+/*
+* Hero - extends Character, Subclass and parent in Factory design pattern, contains variables and methods for Hero level.
+*/
 public class Hero extends Character {
     double mana = 0;
     double strength = 0;

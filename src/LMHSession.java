@@ -1,6 +1,9 @@
 import java.util.*;
 import java.io.FileNotFoundException;
 
+/*
+* LMHSession - Contains methods for interacting with and updating at the game session level. startSession() function is where game logic lives.
+*/
 public class LMHSession {
     protected Utility utils;
     public ArrayList<Hero> chosenHeroesList = new ArrayList<Hero>();

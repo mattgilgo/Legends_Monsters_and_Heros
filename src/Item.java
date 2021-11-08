@@ -1,3 +1,6 @@
+/*
+* Item - Superclass in Factory design pattern, contains variables and methods for Item level.
+*/
 public class Item {
     String name = "";
     int price = 0;

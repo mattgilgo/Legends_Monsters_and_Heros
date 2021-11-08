@@ -4,6 +4,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
+/*
+* TxtParse - class to handle all txt file read-ins and initialize Items/Characters
+*/
 public class TxtParse {
 
     Object file;

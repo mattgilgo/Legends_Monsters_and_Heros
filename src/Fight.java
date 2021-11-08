@@ -1,5 +1,8 @@
 import java.util.*;
 
+/*
+* Fight - Contains methods for performing Hero vs. Monster battles.
+*/
 public class Fight {
     ArrayList<Hero> heroesFighting;
     ArrayList<Monster> monstersFighting;

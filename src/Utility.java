@@ -1,3 +1,6 @@
+/*
+* Utility - class to handle error checking for user inputs.
+*/
 import java.util.*;
 
 public class Utility {

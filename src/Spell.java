@@ -1,3 +1,6 @@
+/*
+* Spell - extends Item, Subclass and parent in Factory design pattern, contains variables and methods for Spell level.
+*/
 public class Spell extends Item {
     double damage = 0;
     double manaCost = 0;

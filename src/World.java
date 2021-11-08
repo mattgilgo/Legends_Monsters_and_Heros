@@ -1,5 +1,8 @@
 import java.util.*;
 
+/*
+* World - Contains methods to initialize game board and store information about the board for use during session.
+*/
 public class World {
 
     String[][] backgroundMap;
