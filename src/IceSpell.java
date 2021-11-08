@@ -1,3 +1,6 @@
+/*
+* IceSpell - extends Spell, Subclass in Factory design pattern, contains variables and methods for IceSpell level.
+*/
 public class IceSpell extends Spell {
     String typeSpell = "IceSpell";
     

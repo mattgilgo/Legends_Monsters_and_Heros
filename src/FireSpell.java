@@ -1,3 +1,6 @@
+/*
+* FireSpell - extends Spell, Subclass in Factory design pattern, contains variables and methods for FireSpell level.
+*/
 public class FireSpell extends Spell {
     String typeSpell = "FireSpell";
     

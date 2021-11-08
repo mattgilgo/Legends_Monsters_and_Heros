@@ -1,3 +1,6 @@
+/*
+* Main - Contains main method for running total program.
+*/
 import java.io.FileNotFoundException;
 
 public class Main {

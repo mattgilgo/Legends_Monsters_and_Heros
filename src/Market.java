@@ -1,6 +1,9 @@
 import java.io.FileNotFoundException;
 import java.util.*;
 
+/*
+* Market - Contains all methods relating to a Market, include constructor method, random inventory initialization, and removing items from inventory.
+*/
 public class Market {
     ArrayList<Item> inventory;
     

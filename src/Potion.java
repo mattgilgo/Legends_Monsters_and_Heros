@@ -1,3 +1,6 @@
+/*
+* Potion - extends Item, Subclass in Factory design pattern, contains variables and methods for Potion level.
+*/
 public class Potion extends Item {
     double attrAdded = 0;
     String attrAffected = "";

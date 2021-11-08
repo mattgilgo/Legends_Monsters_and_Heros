@@ -1,4 +1,7 @@
-public class Weapon extends Item {
+/*
+* Weapon - extends Item implements Holdable, Subclass in Factory design pattern, contains variables and methods for Weapon level.
+*/
+public class Weapon extends Item implements Holdable {
     double damage = 0;
     int reqHands = 0;
     String type = "Weapon";

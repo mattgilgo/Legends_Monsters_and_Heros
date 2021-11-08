@@ -1,3 +1,6 @@
+/*
+* Character - Superclass in Factory design pattern, contains variables and methods for Character level.
+*/
 public abstract class Character {
     String name = "";
     double hp = 0;
