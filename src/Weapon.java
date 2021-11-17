@@ -33,4 +33,3 @@ public class Weapon extends Item {
         return ("Name:" + this.getName() +"  Cost:" + this.getPrice() + "  Required Level:" + this.getMinLevel() + "  Damage:" + this.getDamage() + "  Required Hands:" + this.getReqHands());
     }
 }
-}

@@ -2,6 +2,7 @@ public abstract class Character {
     String name = "";
     int hp = 0;
     int level = 0;
+    String type = "";
 
     public Character(String name, int level) {
         setName(name);
