@@ -12,7 +12,7 @@ public class TxtParse {
     public List<Armor> parseArmor() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Armory.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -38,7 +38,7 @@ public class TxtParse {
     public List<Dragon> parseDragon() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Dragons.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -64,7 +64,7 @@ public class TxtParse {
     public List<Exoskeleton> parseExoskeleton() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Exoskeletons.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -90,7 +90,7 @@ public class TxtParse {
     public List<FireSpell> parseFireSpell() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/FireSpells.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -116,7 +116,7 @@ public class TxtParse {
     public List<IceSpell> parseIceSpell() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/IceSpells.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -142,7 +142,7 @@ public class TxtParse {
     public List<LightningSpell> parseLightningSpell() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/LightningSpells.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -168,7 +168,7 @@ public class TxtParse {
     public List<Paladin> parsePaladin() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Paladins.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -194,7 +194,7 @@ public class TxtParse {
     public List<Potion> parsePotion() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Potions.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -220,7 +220,7 @@ public class TxtParse {
     public List<Sorcerer> parseSorcerer() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Sorcerers.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -246,7 +246,7 @@ public class TxtParse {
     public List<Spirit> parseSpirit() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Spirits.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -272,7 +272,7 @@ public class TxtParse {
     public List<Warrior> parseWarrior() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Warriors.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
@@ -298,7 +298,7 @@ public class TxtParse {
     public List<Weapon> parseWeapon() throws FileNotFoundException {
 
         Path currentPath = Paths.get(System.getProperty("user.dir"));
-        Path filePath = Paths.get(currentPath.toString(), "/ReadInTxtFiles");
+        Path filePath = Paths.get(currentPath.toString(), "/src/ReadInTxtFiles");
         Path txt = Paths.get(filePath.toString(), "/Weaponry.txt");
         File file = new File(txt.toString());
         Scanner scan = new Scanner(file);
