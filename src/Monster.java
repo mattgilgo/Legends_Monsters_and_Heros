@@ -1,11 +1,13 @@
-
-
+/*
+* Monster - extends Character, Subclass and parent in Factory design pattern, contains variables and methods for Monster level.
+*/
 public class Monster extends Character{
-    int attack = 0;
-    int defense = 0;
-    int evade = 0;
+    double attack = 0;
+    double defense = 0;
+    double evade = 0;
     
-    public Monster(String name, int level, int attack, int defense, int evade) {
+    // Constructor method for Monster
+    public Monster(String name, int level, double attack, double defense, double evade) {
         super(name, level);
         setAttack(attack);
         setDefense(defense);
@@ -16,27 +18,27 @@ public class Monster extends Character{
         // put faint code here
     }
 
-    public int getAttack() {
+    public double getAttack() {
         return this.attack;
     }
 
-    public void setAttack(int attack) {
+    public void setAttack(double attack) {
         this.attack = attack;
     }
 
-    public int getDefense() {
+    public double getDefense() {
         return this.defense;
     }
 
-    public void setDefense(int defense) {
+    public void setDefense(double defense) {
         this.defense = defense;
     }
 
-    public int getEvade() {
+    public double getEvade() {
         return this.evade;
     }
 
-    public void setEvade(int evade) {
+    public void setEvade(double evade) {
         this.evade = evade;
     }
 

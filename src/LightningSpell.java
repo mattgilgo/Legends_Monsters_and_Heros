@@ -1,4 +1,8 @@
+/*
+* LightningSpell - extends Spell, Subclass in Factory design pattern, contains variables and methods for LightningSpell level.
+*/
 public class LightningSpell extends Spell {
+    String typeSpell = "LightningSpell";
 
         // Constructor method for LightningSpell object
         public LightningSpell(String name, int price, int minLevel, int damage, int manaCost) {
